@@ -1,5 +1,6 @@
 {
   "type": "micro",
+  "name": "hey_katya", 
   "wake_word": "hey_katya",
   "author": "Sarpel",
   "version": 2,
