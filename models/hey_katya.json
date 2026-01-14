@@ -1,0 +1,16 @@
+{
+  "type": "micro",
+  "wake_word": "hey_katya",
+  "author": "Sarpel",
+  "version": 2,
+  "model": "hey_katya.tflite",
+  "trained_languages": [
+    "en"
+  ],
+  "micro": {
+    "probability_cutoff": 0.5,
+    "sliding_window_size": 149,
+    "feature_step_size": 10,
+    "tensor_arena_size": 60000
+  }
+}
