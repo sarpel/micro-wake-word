@@ -5,6 +5,7 @@
   "website": "https://www.sarpel.net",
   "trained_languages": ["en"],
   "version": 2,
+  "model": "hey_katya.tflite",
   "micro": {
     "model": "hey_katya.tflite",
     "probability_cutoff": 0.57,
