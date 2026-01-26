@@ -1,12 +1,12 @@
 {
   "type": "micro",
-  "wake_word": "Hey Katya",
+  "wake_word": "hey_katya",
   "author": "Sarpel GÜRAY",
-  "website": "www.sarpel.net",
-  "model": "hey_katya.tflite",
+  "website": "https://www.sarpel.net",
   "trained_languages": ["en"],
   "version": 2,
   "micro": {
+    "model": "hey_katya.tflite",
     "probability_cutoff": 0.57,
     "feature_step_size": 10,
     "sliding_window_size": 5,
