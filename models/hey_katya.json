@@ -1,16 +1,20 @@
 {
   "type": "micro",
-  "wake_word": "Hey Katya",
-  "author": "Sarpel GÜRAY",
-  "website": "https://www.sarpel.net",
-  "model": "hey_katya.tflite",
-  "trained_languages": ["en"],
-  "version": 2,
+  "wake_word": "hey_katya",
+  "author": "Custom",
+  "website": "",
+  "trained_languages": [
+    "en"
+  ],
+  "version": 1,
   "micro": {
-    "probability_cutoff": 0.36,
+    "model": "hey_katya.tflite",
+    "probability_cutoff": 0.7,
     "feature_step_size": 10,
     "sliding_window_size": 5,
-    "tensor_arena_size": 22860,
+    "tensor_arena_size": 32768,
     "minimum_esphome_version": "2024.7.0"
-  }
+  },
+  "manifest_version": 2,
+  "created_at": "2026-01-26T03:12:04.698033"
 }
