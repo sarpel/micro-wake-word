@@ -8,7 +8,7 @@
   "model": "hey_katya.tflite",
   "micro": {
     "model": "hey_katya.tflite",
-    "probability_cutoff": 0.57,
+    "probability_cutoff": 0.85,
     "feature_step_size": 10,
     "sliding_window_size": 5,
     "tensor_arena_size": 22860,
