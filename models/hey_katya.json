@@ -3,12 +3,10 @@
   "wake_word": "hey_katya",
   "author": "Sarpel GÜRAY",
   "website": "",
-  "trained_languages": [
-    "en"
-  ],
+  "model": "hey_katya.tflite",
+  "trained_languages": ["en"],
   "version": 1,
   "micro": {
-    "model": "hey_katya.tflite",
     "probability_cutoff": 0.7,
     "feature_step_size": 10,
     "sliding_window_size": 5,
