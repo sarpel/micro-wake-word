@@ -1,6 +1,6 @@
 {
   "type": "micro",
-  "wake_word": "hey_katya",
+  "wake_word": "Hey Katya",
   "author": "Sarpel GÜRAY",
   "website": "www.sarpel.net",
   "model": "hey_katya.tflite",
