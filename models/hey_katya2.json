@@ -1,15 +1,15 @@
 {
   "type": "micro",
   "wake_word": "Hey Katya",
-  "author": "sarpel",
-  "website": "",
-  "model": "hey_katya.tflite",
+  "author": "Sarpel GURAY",
+  "website": "https://github.com/sarpel/mww-notebook",
+  "model": "hey_katya2.tflite",
   "trained_languages": ["en"],
   "version": 2,
   "micro": {
     "probability_cutoff": 0.83,
-    "feature_step_size": 10,
     "sliding_window_size": 5,
+    "feature_step_size": 10,
     "tensor_arena_size": 30992,
     "minimum_esphome_version": "2024.7.0"
   }
