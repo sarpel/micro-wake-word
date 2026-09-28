@@ -1,0 +1,371 @@
+{
+  "tflite_file": "stream_state_internal_quant.tflite",
+  "tflite_sha256": "53d5e8a0e6b074e4b1c4b0da60464dab4857b61800c7f37c4a7b9a8ffe65ecdc",
+  "source_saved_model": "/home/sarpel/mww-notebook/models/hey_katya_28092026_192410/stream_state_internal",
+  "source_saved_model_sha256": "1b6405e25f782472c5d5765806d29ee86f3bc650f6391b197189793e68dc4c85",
+  "export_timestamp": "2026-09-28T20:06:19.082171+00:00",
+  "config_snapshot": {
+    "workflow_alias": "hey_katya",
+    "random_seed": 42,
+    "model": {
+      "name": "mixednet",
+      "args": {
+        "first_conv_filters": 64,
+        "first_conv_kernel_size": 5,
+        "mixconv_kernel_sizes": "[5],[7,11],[9,15],[23]",
+        "pointwise_filters": "128,128,128,128",
+        "repeat_in_block": "1,1,1,1",
+        "residual_connection": "0,0,0,0",
+        "stride": 3
+      }
+    },
+    "clip_duration_ms": 1500,
+    "spectrogram_length": 204,
+    "window_step_ms": 10,
+    "stride": 3,
+    "sample_rate_hz": 16000,
+    "window_size_ms": 30,
+    "spectrogram_bins": 40,
+    "upper_band_limit_hz": 7500,
+    "lower_band_limit_hz": 125,
+    "feature_generation": {
+      "ambient_max_spectrograms": 1000000,
+      "ambient_random_seed": 10,
+      "augmentation": {
+        "augmentation_duration_s": 3.2,
+        "augmentation_probabilities": {
+          "AddBackgroundNoise": 0.8,
+          "AddColorNoise": 0.2,
+          "BandStopFilter": 0.1,
+          "Gain": 1.0,
+          "PitchShift": 0.1,
+          "RIR": 0.5,
+          "SevenBandParametricEQ": 0.1,
+          "TanhDistortion": 0.05
+        },
+        "background_max_snr_db": 10,
+        "background_min_snr_db": -5,
+        "background_paths": [
+          "./dataset/background"
+        ],
+        "impulse_paths": [
+          "./dataset/rirs"
+        ],
+        "max_jitter_s": 0.205,
+        "min_jitter_s": 0.195,
+        "color_min_snr_db": 10,
+        "color_max_snr_db": 30,
+        "min_gain_db": -10,
+        "max_gain_db": 0,
+        "min_gain_transition_db": -10,
+        "max_gain_transition_db": 10,
+        "eq_min_gain_db": -6,
+        "eq_max_gain_db": 6,
+        "distortion_min": 0.0001,
+        "distortion_max": 0.1,
+        "pitch_shift_min_semitones": -2,
+        "pitch_shift_max_semitones": 2
+      },
+      "background": {
+        "file_pattern": "*.wav",
+        "input_directory": "./dataset/background"
+      },
+      "eval_slide_frames": 1,
+      "hard_negative": {
+        "file_pattern": "**/*.wav",
+        "group_by": "parent_dir",
+        "input_directory": "./dataset/hard_negative_trimmed",
+        "shard_count": 8
+      },
+      "negative": {
+        "file_pattern": "**/*.wav",
+        "group_by": "parent_dir",
+        "input_directory": "./dataset/negative_trimmed",
+        "shard_count": 64
+      },
+      "positive": {
+        "file_pattern": "**/*.wav",
+        "group_by": "parent_dir",
+        "input_directory": "./dataset/positive_trimmed"
+      },
+      "process_workers": 4,
+      "random_split_seed": 10,
+      "step_ms": 10,
+      "test_split_count": 0.1,
+      "training_slide_frames": 10,
+      "training_repeat": 1,
+      "validation_split_count": 0.2
+    },
+    "features": [
+      {
+        "features_dir": "./data/processed/hey_katya_augmented_features",
+        "max_validation_samples": 15000,
+        "name": "positive",
+        "penalty_weight": 1.0,
+        "sampling_weight": 4.814182841592828,
+        "truncation_strategy": "truncate_start",
+        "truth": true,
+        "type": "npz",
+        "lazy": true
+      },
+      {
+        "features_dir": "./data/processed/hey_katya_negative_features",
+        "max_validation_samples": 10000,
+        "name": "negative",
+        "penalty_weight": 1.0,
+        "sampling_weight": 3.5,
+        "truncation_strategy": "random",
+        "truth": false,
+        "type": "npz",
+        "lazy": true
+      },
+      {
+        "features_dir": "./data/processed/hey_katya_hard_negative_features",
+        "is_hard_negative": true,
+        "max_validation_samples": 10000,
+        "name": "hard_negative",
+        "penalty_weight": 1.0,
+        "sampling_weight": 1.815913561296214,
+        "truncation_strategy": "truncate_start",
+        "truth": false,
+        "type": "npz",
+        "lazy": true
+      },
+      {
+        "features_dir": "./data/processed/hey_katya_background_features",
+        "max_validation_samples": 5000,
+        "name": "background",
+        "penalty_weight": 1.0,
+        "sampling_weight": 2.0,
+        "truncation_strategy": "random",
+        "truth": false,
+        "type": "npz",
+        "lazy": true
+      },
+      {
+        "features_dir": "./data/processed/speech_features",
+        "max_validation_samples": 1000,
+        "name": "speech",
+        "penalty_weight": 1.0,
+        "sampling_weight": 0.7,
+        "truncation_strategy": "random",
+        "truth": false,
+        "type": "npz",
+        "lazy": true
+      },
+      {
+        "features_dir": "./data/processed/no_speech_features",
+        "max_validation_samples": 1000,
+        "name": "no_speech",
+        "penalty_weight": 1.0,
+        "sampling_weight": 0.7,
+        "truncation_strategy": "random",
+        "truth": false,
+        "type": "npz",
+        "lazy": true
+      },
+      {
+        "features_dir": "./data/processed/dinner_party_features",
+        "max_validation_samples": 1000,
+        "name": "dinner_party",
+        "penalty_weight": 1.0,
+        "sampling_weight": 0.7,
+        "truncation_strategy": "random",
+        "truth": false,
+        "type": "npz",
+        "lazy": true
+      }
+    ],
+    "extra_lazy_negatives": [],
+    "training_steps": [
+      40000
+    ],
+    "batch_size": 2048,
+    "validation_batch_size": 512,
+    "steps_per_execution": 32,
+    "tensorboard_flush_interval": 5,
+    "initial_learning_rate": 0.007546833808538938,
+    "learning_rates": [
+      0.001
+    ],
+    "lr_schedule": "cosine",
+    "sgdr_t0": 1000,
+    "sgdr_t_mult": 1,
+    "use_mixup": false,
+    "mixup_alpha": 0.2,
+    "mixup_only_positive_negative": false,
+    "min_learning_rate": 1e-07,
+    "warmup_start_lr": "1e-7",
+    "warmup_steps": 400,
+    "gradient_clip_norm": 0.6679150104134841,
+    "gradient_clip_value": null,
+    "weight_decay": 4e-05,
+    "use_focal_loss": false,
+    "focal_loss_alpha": 0.7107686340008299,
+    "focal_loss_gamma": 1.6856753209633593,
+    "label_smoothing": 0.0368273331043601,
+    "auto_class_weights": false,
+    "positive_class_weight": [
+      1.3858429727292783
+    ],
+    "negative_class_weight": [
+      1.5416218829288835
+    ],
+    "hard_negative_class_weight": [
+      0.5885850178872143
+    ],
+    "freq_mask_count": [
+      3
+    ],
+    "freq_mask_max_size": [
+      4
+    ],
+    "time_mask_count": [
+      5
+    ],
+    "time_mask_max_size": [
+      12
+    ],
+    "mixed_precision": true,
+    "use_ema": true,
+    "ema_momentum": 0.999,
+    "ema_start_phase": 1,
+    "use_swa": false,
+    "swa_start_step": 2500,
+    "early_stopping_patience": "auto",
+    "eval_step_interval": 1000,
+    "cache_validation_dataset": true,
+    "cache_validation_dataset_ambient": false,
+    "classification_threshold": 0.5,
+    "auc_num_thresholds": 100,
+    "maximization_metric": "average_viable_recall",
+    "minimization_metric": "ambient_false_positives_per_hour",
+    "target_minimization": 1.3480058060902393,
+    "min_checkpoint_improvement": "1e-3",
+    "compute_ambient_metrics": true,
+    "ambient_cooldown_step_s": 0.18,
+    "roc_num_cutoffs": 201,
+    "avr_max_faph": 2.0,
+    "target_faphs": [
+      0.25,
+      0.5,
+      1.0,
+      2.0
+    ],
+    "quarantine": {
+      "enabled": true,
+      "top_n": 10,
+      "score_metric": "pick_count_x_confidence",
+      "avr_threshold": 0.5,
+      "quarantine_dir": "./dataset/hard_negative_quarantined",
+      "auto_move": false
+    },
+    "validity_min_avr": 0.2,
+    "validity_always_fires_recall": 0.99,
+    "validity_always_fires_faph": 50,
+    "validity_max_cutoff_for_no_faph": 0.999,
+    "kd_enable": true,
+    "kd_alpha": 0.5,
+    "kd_temperature": 4.0,
+    "kd_logits_root": "data/processed",
+    "kd_strict_align": true,
+    "calibration_num_samples": 500,
+    "calibration_seed": 42,
+    "calibration_n_bins": 10,
+    "calibration_min_bin_count": 5,
+    "training_subsample_seed": 42,
+    "validation_subsample_seed": 42,
+    "split_leading_frames_to_drop": 20,
+    "vad_aggressiveness": 0,
+    "fetch_chunk_size": 32,
+    "fetch_workers": 10,
+    "performance": {
+      "max_training_base_datasets": 8,
+      "tf_data_ram_budget_gb": 8,
+      "max_training_dataset_caches": 8,
+      "shuffle_buffer_size": 8192,
+      "tf_cudnn_deterministic": 0,
+      "tf_enable_cudnn_frontend": 1,
+      "tf_gpu_thread_mode": "gpu_private",
+      "tf_inter_op_threads": 4,
+      "tf_intra_op_threads": 6
+    },
+    "performance_profile": {
+      "enabled": true,
+      "aggregate_every_n_calls": 100
+    },
+    "logger": {
+      "level": "INFO",
+      "enable_rich_console": true,
+      "enable_file_logging": true,
+      "suppress_tf_noise": true,
+      "show_metrics_table": false,
+      "metrics": {
+        "accuracy": true,
+        "ambient_false_positives_per_hour": true,
+        "auc": true,
+        "average_viable_recall": true,
+        "cross_entropy": true,
+        "precision": true,
+        "recall": true,
+        "recall_at_no_faph": true,
+        "tensorboard": true,
+        "validation_accuracy": true,
+        "validation_auc": true,
+        "validation_loss": true,
+        "validation_precision": true,
+        "validation_recall": true
+      }
+    },
+    "study": {
+      "multi_seed": false,
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "champion_run_dir": "models/hey_katya_21052026_193231",
+      "optuna_study_name": "hey_katya_solo_v8_avr",
+      "bootstrap_B": 1000,
+      "paired_metric": "average_viable_recall",
+      "promote_mdd": 0.015,
+      "promote_val_cutoff_threshold": 0.8,
+      "build_eval_matrix": true
+    },
+    "audiomentations": {
+      "transforms": {
+        "PitchShift": 0.43924912721783627,
+        "RIR": 0.7183908896013652
+      }
+    },
+    "tflite_size_limit_kb": 512,
+    "train_dir": "/home/sarpel/mww-notebook/models/hey_katya_28092026_192410",
+    "summaries_dir": "/home/sarpel/mww-notebook/models/hey_katya_28092026_192410/logs",
+    "spectrogram_length_final_layer": 50,
+    "flags": {
+      "training_config": "/home/sarpel/mww-notebook/models/hey_katya_28092026_192410/training_config.yaml",
+      "model_name": "mixednet",
+      "pointwise_filters": "128,128,128,128",
+      "residual_connection": "0,0,0,0",
+      "repeat_in_block": "1,1,1,1",
+      "mixconv_kernel_sizes": "[5],[7,11],[9,15],[23]",
+      "max_pool": 0,
+      "first_conv_filters": 64,
+      "first_conv_kernel_size": 5,
+      "spatial_attention": 0,
+      "pooled": 0,
+      "stride": 3
+    },
+    "training_input_shape": [
+      204,
+      40
+    ],
+    "run_id": "2026-09-28T19:24:10",
+    "created_at": "2026-09-28T19:24:14.669941",
+    "source_config_path": "configs/hey_katya_claude_v1.yaml"
+  },
+  "calibration": {
+    "calibration_source": "precalibrated",
+    "num_samples": 999
+  }
+}
